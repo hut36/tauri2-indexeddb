@@ -1,5 +1,6 @@
 <script lang="ts">
   import { invoke } from "@tauri-apps/api/core";
+  import { openDB } from "idb";
 
   let name = "";
   let greetMsg = "";
@@ -8,6 +9,8 @@
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
     greetMsg = await invoke("greet", { name });
   }
+
+  openDB("test").then((db) => console.log("db opened: ", db));
 </script>
 
 <div class="container">
